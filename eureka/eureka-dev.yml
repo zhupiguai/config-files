@@ -1,0 +1,21 @@
+server:
+  port: 10010
+
+eureka:
+  instance:
+    hostname: localhost
+    preferIpAddress: true
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+  client:
+    register-with-eureka: false #   要不要注册到其他eureka节点上
+    fetch-registry: false       #   要不要从其他eureka节点取数据
+    #开启客户端存活状态监测
+    healthcheck:
+      enabled: true
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  server:
+    wait-time-in-ms-when-sync-empty: 0
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 60000

@@ -1,0 +1,16 @@
+.gradle
+.settings
+.classpath
+.project
+target
+.idea
+*.iml
+*.ipr
+*.iws
+generatorConfig.xml
+build/*
+*.springBeans
+*.log.zip
+*.factorypath
+*.prefs
+logPath_IS_UNDEFINED/

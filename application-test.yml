@@ -1,0 +1,66 @@
+# 此配置将会所有项目公用
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://10.12.11.24:8761/eureka/
+ #配置日志级别
+#logging:
+#  config: classpath:config/logback.xml
+
+#spring:
+#  rabbitmq:
+#    host: 10.12.11.24
+#    port: 5672
+#    username: admin
+#    password: 123456
+#    virtualHost: /
+#    publisherConfirms: true
+#  redis:
+#    database: 1 # Redis数据库索引（默认为0,有0-15共16个数据库）
+#    timeout: 15000
+#    pool:
+#      max-active: 8 # 连接池最大连接数（使用负值表示没有限制）
+#      max-wait: -1  # 连接池最大阻塞等待时间（使用负值表示没有限制）
+#      max-idle: 8 # 连接池中的最大空闲连接
+#      min-idle: 0 # 连接池中的最小空闲连接
+#    cluster:
+#      nodes:
+#      - 10.10.11.86:6379
+#      - 10.10.11.86:6380
+#      - 10.10.11.86:6381
+#      - 10.10.11.86:6382
+#      - 10.10.11.86:6383
+#      - 10.10.11.86:6384
+#    password: QKrds_TEST$201803
+#  redisson:
+#    iscluster: true
+#    scanInterval: 1000
+#    failedAttempts: 3
+#    reconnectionTimeout: 3000
+#    retryInterval: 1500
+#    retryAttempts: 3
+#    timeout: 3000
+#    connectTimeout: 10000
+#    idleConnectionTimeout: 10000
+#    masterConnectionPoolSize: 64
+#    slaveConnectionMinimumIdleSize: 10
+#
+#
+#
+## fast配置
+#fastdfs:
+#  http:
+#    url: http://10.10.11.136
+#  service:
+#    ip: http://10.10.11.136
+#    id: 10001
+#  update:
+#    url: http://10.10.11.136/fdfs-client/upload/file?service_id=10001&sign=SIGN
+#  md5:
+#    key: 1fc999b7a5e94a25be4fe42df6fc80f4
+
+mybatis: 
+  mapper-locations: classpath:config/mybatis/*.xml
+mybatis-plus: 
+  mapper-locations: classpath:config/mybatis/*.xml

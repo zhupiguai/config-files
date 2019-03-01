@@ -1,0 +1,37 @@
+# 此配置将会所有项目公用
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.4:10010/eureka/
+
+#spring:
+#  rabbitmq:
+#    host: 10.12.11.234
+#    port: 5672
+#    username: admin
+#    password: 123456
+#    virtualHost: /
+#    publisherConfirms: true
+#  redis:
+#    host: 10.10.11.177
+#    port: 6381
+#    password: Rds$112017
+#    timeout: 15000
+#
+## fast配置
+#fastdfs:
+#  http:
+#    url: http://10.10.11.136
+#  service:
+#    ip: http://10.10.11.136
+#    id: 10001
+#  update:
+#    url: http://10.10.11.136/fdfs-client/upload/file?service_id=10001&sign=SIGN
+#  md5:
+#    key: 1fc999b7a5e94a25be4fe42df6fc80f4
+
+mybatis: 
+  mapper-locations: classpath:config/mybatis/*.xml
+mybatis-plus: 
+  mapper-locations: classpath:config/mybatis/*.xml

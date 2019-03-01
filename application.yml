@@ -1,0 +1,90 @@
+# 此配置将会所有项目公用
+
+management:
+  security:
+    enabled: false
+
+eureka:
+  instance:
+    #租期到期时间，默认90秒
+    lease-expiration-duration-in-seconds: 30
+    #租赁更新时间间隔，默认30，即30秒发送一次心跳
+    lease-renewal-interval-in-seconds: 10
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+    statusPageUrlPath: /swagger-ui.html
+  client:
+    healthcheck:
+      enable: true  #开启健康检查(需要spring-boot-starter-actuator依赖)
+
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 80000  #大于 (1 + MaxAutoRetries + MaxAutoRetriesNextServer) * ReadTimeout 比较好
+
+ribbon:
+  ConnectTimeout: 2000
+  ReadTimeout: 20000
+  OkToRetryOnAllOperations: false
+  MaxAutoRetries: 1
+  MaxAutoRetriesNextServer: 1
+  retryableStatusCodes: 404,502,500,408
+  NFLoadBalancerRuleClassName: com.springcloud.base.core.LabelAndWeightMetadataRule
+  
+spring:
+  output:
+    ansi:
+      enabled: ALWAYS
+  http:
+    encoding:
+      force: true
+  redisson:
+    iscluster: false
+    scanInterval: 1000
+    failedAttempts: 3
+    reconnectionTimeout: 3000
+    retryInterval: 1500
+    retryAttempts: 3
+    timeout: 3000
+    connectTimeout: 30000
+    idleConnectionTimeout: 10000
+    masterConnectionPoolSize: 64
+    slaveConnectionMinimumIdleSize: 10
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    druid:
+      max-active: 100 # 指定连接池中最大的活跃连接数.
+      max-wait: 5000  # 指定连接池等待连接返回的最大等待时间，毫秒单位
+      min-idle: 5 # 指定必须保持连接的最小值
+      initial-size: 1 # 指定启动连接池时，初始建立的连接数量
+#      name: mysqldb
+#      platform: mysql
+#      driver-class-name: com.mysql.jdbc.Driver
+#      type: com.alibaba.druid.pool.DruidDataSource
+#      initialSize: 10
+#      minIdle: 10
+#      maxActive: 100
+#      maxWait: 60000
+#      timeBetweenEvictionRunsMillis: 3600000
+#      minEvictableIdleTimeMillis: 3600000
+#      validationQuery: select 'x'
+#      testWhileIdle: true
+#      testOnBorrow: false
+#      testOnReturn: false
+#      filters: stat
+#      poolPreparedStatements: false
+#      maxOpenPreparedStatements: 20
+
+image:
+  temp:
+    path: /tmp/photo
+
+mybatis:
+  mapper-locations: classpath:config/mybatis/*.xml
+mybatis-plus:
+  mapper-locations: classpath:config/mybatis/*.xml
